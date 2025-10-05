@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
 import Button from "./components/ui/button.tsx";
-import SmartSelect from "./components/ui/select.tsx";
 
 // Tiny inline icons
 const PlusIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -302,181 +301,34 @@ export default function App() {
           </div>
         </section>
 
-        {/* Variants by color */}
-        <section id="variants" className="space-y-4 mb-10">
-          <h2 className="text-xl font-semibold">Variants × Colors</h2>
-          {(["blue", "green", "red", "gray"] as const).map((color) => (
-            <div key={color} className="space-y-2">
-              <h3 className="text-sm font-medium opacity-70 capitalize">
-                {color}
-              </h3>
+        {/* Presets quick grid */}
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold">Presets rapides</h2>
+          {(["blue", "green", "red", "gray"] as const).map((c) => (
+            <div key={c} className="space-y-2">
+              <h3 className="text-sm font-medium opacity-70 capitalize">{c}</h3>
               <div className="flex flex-wrap gap-3">
-                <Button variant="solid" color={color}>
+                <Button variant="solid" color={c}>
                   Solid
                 </Button>
-                <Button variant="outlined" color={color}>
+                <Button variant="outlined" color={c}>
                   Outlined
                 </Button>
-                <Button variant="dashed" color={color}>
+                <Button variant="dashed" color={c}>
                   Dashed
                 </Button>
-                <Button variant="filled" color={color}>
+                <Button variant="filled" color={c}>
                   Filled
                 </Button>
-                <Button variant="text" color={color}>
+                <Button variant="text" color={c}>
                   Text
                 </Button>
-                <Button variant="link" color={color} href="#">
+                <Button variant="link" color={c} href="#">
                   Link
                 </Button>
               </div>
             </div>
           ))}
-        </section>
-
-        {/* Type fallbacks */}
-        <section className="space-y-3 mb-10">
-          <h2 className="text-xl font-semibold">
-            Type (fallback when no color/variant)
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            <Button type="default">Default</Button>
-            <Button type="primary">Primary</Button>
-            <Button type="dashed">Dashed</Button>
-            <Button type="text">Text</Button>
-            <Button type="link" href="#">
-              Link
-            </Button>
-          </div>
-        </section>
-
-        {/* Sizes & Shapes */}
-        <section className="grid md:grid-cols-2 gap-8 mb-10">
-          <div className="space-y-3">
-            <h2 className="text-xl font-semibold">Sizes</h2>
-            <div className="flex flex-wrap gap-3 items-center">
-              <Button type="primary" size="small">
-                Small
-              </Button>
-              <Button type="primary" size="middle">
-                Middle
-              </Button>
-              <Button type="primary" size="large">
-                Large
-              </Button>
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <h2 className="text-xl font-semibold">Shapes</h2>
-            <div className="flex flex-wrap gap-3 items-center">
-              <Button type="primary" shape="default">
-                Default
-              </Button>
-              <Button type="primary" shape="round">
-                Round
-              </Button>
-              <Button
-                className="size-10"
-                type="primary"
-                shape="circle"
-                aria-label="Circle"
-              >
-                <PlusIcon />
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* States */}
-        <section className="grid md:grid-cols-2 gap-8 mb-10">
-          <div className="space-y-3">
-            <h2 className="text-xl font-semibold">States</h2>
-            <div className="flex flex-wrap gap-3 items-center">
-              <Button variant="outlined" color="blue" disabled>
-                Disabled
-              </Button>
-              <Button
-                variant="solid"
-                color="green"
-                onClick={() => {
-                  setLoading(true);
-                  setTimeout(() => setLoading(false), 1200);
-                }}
-                loading={loading}
-              >
-                {loading ? "Loading…" : "Trigger loading"}
-              </Button>
-              <Button variant="solid" color="red" danger>
-                Danger
-              </Button>
-              <Button variant="outlined" color="gray" ghost>
-                Ghost
-              </Button>
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <h2 className="text-xl font-semibold">Block</h2>
-            <div className="space-y-3 w-full max-w-md">
-              <Button variant="solid" color="blue" block>
-                Full width action
-              </Button>
-              <Button type="default" block>
-                Full width (type default)
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Icons & Positions */}
-        <section className="space-y-3 mb-10">
-          <h2 className="text-xl font-semibold">Icons</h2>
-          <div className="flex flex-wrap gap-3 items-center">
-            <Button
-              variant="solid"
-              color="blue"
-              icon={<PlusIcon />}
-              iconPosition="start"
-            >
-              Add item
-            </Button>
-            <Button
-              variant="outlined"
-              color="green"
-              icon={<ArrowRightIcon />}
-              iconPosition="end"
-            >
-              Continue
-            </Button>
-            <Button
-              className="size-15"
-              variant="text"
-              color="gray"
-              icon={<PlusIcon width="24px" />}
-              aria-label="Icon only"
-              shape="circle"
-            />
-          </div>
-        </section>
-
-        {/* Link / Anchor demo */}
-        <section className="space-y-3 mb-10">
-          <h2 className="text-xl font-semibold">Anchor usage</h2>
-          <div className="flex flex-wrap gap-3 items-center">
-            <Button
-              variant="link"
-              color="blue"
-              href="http://localhost:5174/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              External link
-            </Button>
-            <Button variant="outlined" color="blue" href="#variants">
-              Jump to variants
-            </Button>
-          </div>
         </section>
 
         <footer className="mt-16 text-xs opacity-70">
